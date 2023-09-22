@@ -11,7 +11,7 @@ def stock_purchases():
     client_name = input("What is your name? ")
     # 1.2 TODO: Ask the client how many dollars they would like to invest (use the string: "How much would you like to invest? $")
     # and save it into a variable
-    client_invest = float(input("How much would you like to invest? $"))
+    client_invest = int(input("How much would you like to invest? $"))
     # NOTE: When you use the `input` function to get user input, what do numbers get saved as?
 
     # 1.3 TODO: Uncomment the line below to ask the client which stock they're interested in.
@@ -24,24 +24,26 @@ def stock_purchases():
     # and save it in a variable
 
     if stock_name == "Amazon":
-        stock_price = amazon
+        available_shares = client_invest / amazon
+        available_price = 3000
     elif stock_name == "Apple":
-        stock_price = apple
+        available_shares = client_invest / apple
+        available_price = 100
     elif stock_name == "Facebook":
-        stock_price = fb
+        available_shares = client_invest / fb
+        available_price = 250
     elif stock_name == "Google":
-        stock_price = google
+        available_shares = client_invest / google
+        available_price = 1400
     elif stock_name == "Microsoft":
-        stock_price = msft
+        available_shares = client_invest / msft
+        available_price = 200
     else:
-        print("Invalid stock name.")
-        return
+        available_shares = 0
     
-    num_shares = client_invest // stock_price
-
     # 1.5 TODO: Once you've calculated the number of stocks that can be purchased,
     # Use an f-string to print the result for the client, ala:
     # Alex has $5000 to invest and can buy 50 shares of Apple at the current price of $100.
-    print(f"{client_name} has ${client_invest} to invest and can buy {num_shares} shares of {stock_name} at the current price of ${stock_price}.")
+    print(f"{client_name} has ${client_invest} to invest and can buy {int(available_shares)} shares of {stock_name} at the current price of ${int(available_price)}.")
     
 stock_purchases()
